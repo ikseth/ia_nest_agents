@@ -43,8 +43,13 @@ Con el usuario, una a una:
    (`tools`, que el borde rechaza) e invertiria la direccion. Disparador: cuando
    exista una forma de que el ente encargue trabajo sin dirigirlo
    (`meta docs/CAPAS_FUTURAS.md`, "quien decide y quien orquesta").
-3. **Memoria**: si el ente recuerda lo que ve de las maquinas o cada informe es
-   efimero.
+3. **Memoria. DECIDIDA el 2026-10-22: informes efimeros.** Lo que el agente
+   ve no entra en la memoria del ente; la memoria queda limpia para estudiar el
+   uso de la familia. El historico lo guarda el agente en sus informes
+   (decision 5) y, si hace falta comparar, el agente pasa el resumen anterior
+   en la pregunta. Requiere en el borde una opcion por consumidor que envie
+   `write_back=false` (anexo a edge ADR 0002 y ronda corta de Codex, antes del
+   agente).
 4. **Donde corre** y con que credenciales.
 5. **Donde deja el informe**.
 
