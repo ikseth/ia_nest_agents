@@ -35,7 +35,14 @@ Con el usuario, una a una:
    recorta la salida y pide al ente un diagnostico. El bucle guiado por el ente
    (propone la siguiente comprobacion dentro del catalogo) queda para la
    segunda entrega, sobre el conector, catalogo, policy y auditoria de esta.
-2. **Como se invoca**: a mano, periodico, o desde otro sitio.
+2. **Como se invoca. DECIDIDA el 2026-10-22: a mano, con temporizador
+   opcional.** La pieza base es un comando (`<agente> linux check <host>`). Un
+   temporizador de systemd que llama a ese mismo comando va como ejemplo
+   (`.example`), sin logica propia; lo activa el operador. Invocarlo desde una
+   conversacion queda aparcado: exigiria que el ente llame a un agente
+   (`tools`, que el borde rechaza) e invertiria la direccion. Disparador: cuando
+   exista una forma de que el ente encargue trabajo sin dirigirlo
+   (`meta docs/CAPAS_FUTURAS.md`, "quien decide y quien orquesta").
 3. **Memoria**: si el ente recuerda lo que ve de las maquinas o cada informe es
    efimero.
 4. **Donde corre** y con que credenciales.
