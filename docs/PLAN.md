@@ -29,8 +29,12 @@ Lo que ya esta fijado:
 
 Con el usuario, una a una:
 
-1. **Forma del agente**: comprobaciones fijas del catalogo y un informe, o un
-   bucle en el que el ente elige la siguiente comprobacion dentro del catalogo.
+1. **Forma del agente. DECIDIDA el 2026-10-22: comprobaciones fijas e
+   informe.** Una pasada: el agente ejecuta un conjunto cerrado del catalogo
+   (estado, servicios caidos, errores recientes del journal, disco, red),
+   recorta la salida y pide al ente un diagnostico. El bucle guiado por el ente
+   (propone la siguiente comprobacion dentro del catalogo) queda para la
+   segunda entrega, sobre el conector, catalogo, policy y auditoria de esta.
 2. **Como se invoca**: a mano, periodico, o desde otro sitio.
 3. **Memoria**: si el ente recuerda lo que ve de las maquinas o cada informe es
    efimero.
