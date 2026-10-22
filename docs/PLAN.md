@@ -1,7 +1,7 @@
 # Plan de ia_nest_agents
 
 Estado: propuesta
-Version: 0.2 - 2026-10-22 (decisiones 1 a 4)
+Version: 0.3 - 2026-10-22 (las cinco decisiones cerradas)
 
 ## Primera entrega: el gestor y el agente Linux de solo lectura
 
@@ -73,7 +73,13 @@ Con el usuario, una a una:
    entorno. Destino: usuario normal y comando forzado (contencion, arriba).
    Las credenciales podran salir de un LDAP si se monta (en estudio, tarjeta
    en Deck).
-5. **Donde deja el informe**.
+5. **Donde deja el informe. DECIDIDA el 2026-10-22: pantalla y fichero en su
+   entorno.** El informe de cada ejecucion son los datos recogidos (recortados,
+   JSON) mas el diagnostico del ente (markdown). Lanzado a mano, sale por la
+   salida estandar; siempre, ademas, un fichero por host y ejecucion, con
+   fecha, en el entorno del agente: es el historico de la decision 3. Sacarlo
+   de su entorno (Nextcloud, Deck, notificaciones) seria escribir en otro
+   sistema: aparcado hasta el agente Nextcloud, que tendra esas credenciales.
 
 ## Aparcado
 
