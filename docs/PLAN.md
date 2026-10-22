@@ -1,7 +1,7 @@
 # Plan de ia_nest_agents
 
 Estado: propuesta
-Version: 0.1 - 2026-10-22
+Version: 0.2 - 2026-10-22 (decisiones 1 a 4)
 
 ## Primera entrega: el gestor y el agente Linux de solo lectura
 
@@ -19,10 +19,21 @@ Lo que ya esta fijado:
 - Leer el sistema es del agente, no del ente. Del ADDON-005 del `ia_nest`
   antiguo se reaprovechan las salvaguardas (`BatchMode`, `known_hosts`
   fijado, solo clave publica, usuario dedicado y restringido en destino,
-  `systemd-journal` para logs, lista blanca en fail2ban, catalogo cerrado), no
-  su ubicacion en el core ni sus mutaciones.
-- **Solo lectura impuesta en el destino** (usuario sin `sudo`), no confiada al
-  modelo.
+  `systemd-journal` para logs, catalogo cerrado), no su ubicacion en el core
+  ni sus mutaciones. Si un destino ya tuviera fail2ban, podria banear al
+  agente por abrir muchas conexiones SSH: nota de diagnostico, no requisito.
+- **Contencion en capas**, ninguna confiada al modelo:
+  1. **El sistema operativo.** El agente se instala en su entorno como un
+     usuario normal; en cada destino entra por SSH con otro usuario normal.
+     Ninguno es root ni puede escalar salvo que se le incorpore a sudo. Es la
+     contencion que el sistema da sin hacer nada.
+  2. **El filtro.** El gestor aplica la policy (catalogo de comandos
+     permitidos) y la audita; el comando forzado de `authorized_keys` en el
+     destino repite el catalogo como ultimo cerrojo, valido aunque el agente
+     estuviera comprometido.
+  3. **Conscience (futuro).** Supervisa el pensar del ente, no los actos del
+     agente: encaja en la segunda entrega, cuando el ente PROPONGA la
+     siguiente comprobacion y conscience pueda vetar esa propuesta.
 - Inventario de hosts y claves fuera del repo.
 
 ## Decisiones antes del brief
@@ -55,15 +66,20 @@ Con el usuario, una a una:
    aparte), no en ninguna maquina de IA_NEST. Asi queda aislado y contenido:
    si hay que cortarlo, se corta su entorno sin tocar el ente. Consecuencias:
    - habla con el borde por la red de casa, como cualquier otro consumidor;
-   - las listas blancas de fail2ban de los destinos incluyen el entorno del
-     agente, no las maquinas del ente;
-   - el riesgo de TLS aparcado (edge ADR 0002, punto 3) cubre tambien su
-     clave del borde.
-   Credenciales y destino (clave del borde, clave SSH fuera del repo, comando
-   forzado en destino): pendiente de confirmar.
+   - su clave del borde viaja por la red: TLS esta disponible en el borde
+     (edge ADR 0002, punto 8) y se decide en el laboratorio si se activa;
+   - sistema del entorno: openSUSE Tumbleweed; Debian como alternativa.
+   Credenciales: su clave del borde y su clave SSH, fuera del repo, en su
+   entorno. Destino: usuario normal y comando forzado (contencion, arriba).
+   Las credenciales podran salir de un LDAP si se monta (en estudio, tarjeta
+   en Deck).
 5. **Donde deja el informe**.
 
 ## Aparcado
 
 - Mutaciones (reiniciar servicios, runbooks): son de `ia_nest_external_*`.
+- **Aprobador**: interactuar con el agente para aprobarle comandos concretos.
+  Segunda entrega o posterior. Al disenarlo: lo aprobado no puede saltarse el
+  comando forzado del destino, asi que el aprobador elige dentro de una lista
+  ampliada declarada en el destino, no comandos libres.
 - Agente Nextcloud: despues del Linux.
