@@ -50,7 +50,17 @@ Con el usuario, una a una:
    en la pregunta. Requiere en el borde una opcion por consumidor que envie
    `write_back=false` (anexo a edge ADR 0002 y ronda corta de Codex, antes del
    agente).
-4. **Donde corre** y con que credenciales.
+4. **Donde corre. DECIDIDO el 2026-10-22: fuera de la infraestructura del
+   ente.** El agente vive en un entorno propio y especifico (maquina o VM
+   aparte), no en ninguna maquina de IA_NEST. Asi queda aislado y contenido:
+   si hay que cortarlo, se corta su entorno sin tocar el ente. Consecuencias:
+   - habla con el borde por la red de casa, como cualquier otro consumidor;
+   - las listas blancas de fail2ban de los destinos incluyen el entorno del
+     agente, no las maquinas del ente;
+   - el riesgo de TLS aparcado (edge ADR 0002, punto 3) cubre tambien su
+     clave del borde.
+   Credenciales y destino (clave del borde, clave SSH fuera del repo, comando
+   forzado en destino): pendiente de confirmar.
 5. **Donde deja el informe**.
 
 ## Aparcado
