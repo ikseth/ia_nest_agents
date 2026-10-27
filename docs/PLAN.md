@@ -1,13 +1,14 @@
 # Plan de ia_nest_agents
 
 Estado: propuesta
-Version: 0.3 - 2026-10-22 (las cinco decisiones cerradas)
+Version: 0.4 - 2026-10-27 (orden entre capas en meta, H01)
 
 ## Primera entrega: el gestor y el agente Linux de solo lectura
 
-Va despues de la primera entrega de `ia_nest_edge` (meta ADR 0013). Se disena
-antes, para que el brief este listo cuando el borde pase su visita de
-laboratorio.
+El orden respecto a otras capas no se fija aqui: el agente Linux es un
+consumidor del hito H07 de la hoja de ruta del ente
+(`ia_nest_meta/docs/plan/HOJA_DE_RUTA.md`, meta ADR 0014). Al llegar a H07 se
+revisa si consume la piel OpenAI o el punto REST/MCP comun del borde (H05).
 
 Lo que ya esta fijado:
 
@@ -72,7 +73,8 @@ Con el usuario, una a una:
    Credenciales: su clave del borde y su clave SSH, fuera del repo, en su
    entorno. Destino: usuario normal y comando forzado (contencion, arriba).
    Las credenciales podran salir de un LDAP si se monta (en estudio, tarjeta
-   en Deck).
+   en Deck). Estado posterior (2026-10-27): el directorio de identidades de
+   IA_NEST ya esta en el plan, hito H04 de meta.
 5. **Donde deja el informe. DECIDIDA el 2026-10-22: pantalla y fichero en su
    entorno.** El informe de cada ejecucion son los datos recogidos (recortados,
    JSON) mas el diagnostico del ente (markdown). Lanzado a mano, sale por la
