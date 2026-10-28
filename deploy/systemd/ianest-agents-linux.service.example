@@ -1,0 +1,6 @@
+[Unit]
+Description=IA_NEST agents Linux check
+
+[Service]
+Type=oneshot
+ExecStart=/ruta/privada/venv/bin/ianest-agents --config /ruta/privada/agents.yaml linux check host-ejemplo
