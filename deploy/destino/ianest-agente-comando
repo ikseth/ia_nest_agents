@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Comando forzado del usuario remoto de ianest-agents. Solo lectura.
+
+set -u
+
+case "${SSH_ORIGINAL_COMMAND-}" in
+  estado)
+    uptime
+    exec free -m
+    ;;
+  servicios)
+    exec systemctl --failed --no-legend --plain --no-pager
+    ;;
+  journal)
+    exec journalctl -p err -b --since -24h --no-pager -o short-iso -n 200
+    ;;
+  disco)
+    exec df -hPT -x tmpfs -x devtmpfs -x overlay -x squashfs
+    ;;
+  red)
+    exec ip -br addr
+    ;;
+  *)
+    logger -t ianest-agente-comando -- "fuera de catalogo" || true
+    printf '%s\n' "fuera de catalogo" >&2
+    exit 2
+    ;;
+esac

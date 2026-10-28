@@ -1,0 +1,23 @@
+# Configuracion de ejemplo de ianest-agents.
+# Copiar fuera del repositorio y no versionar la configuracion efectiva.
+
+edge:
+  base_url: "https://edge.example.internal"
+  key_file: "/ruta/privada/edge-agente-linux.key"
+  ca_file: "/ruta/privada/edge-ca.pem"
+  model: "diagnostico"
+  timeout_seconds: 300
+
+ssh:
+  user: "ianest_agente"
+  key_file: "/ruta/privada/ianest-agente-linux"
+  known_hosts_file: "/ruta/privada/known_hosts"
+  connect_timeout_seconds: 5
+  command_timeout_seconds: 30
+
+reports_dir: "/ruta/privada/ianest-agents/reports"
+audit_path: "/ruta/privada/ianest-agents/audit.jsonl"
+
+hosts:
+  host-ejemplo:
+    address: "192.0.2.10"

@@ -3,6 +3,8 @@
 Estado: propuesta
 Version: 0.4 - 2026-10-27 (orden entre capas en meta, H01)
 
+Estado de la primera entrega: implementada en codigo el 2026-10-28; pendiente de verificacion por el disenador y de montaje en laboratorio.
+
 ## Primera entrega: el gestor y el agente Linux de solo lectura
 
 El orden respecto a otras capas no se fija aqui: el agente Linux es un

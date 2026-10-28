@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ianest-agents"
+version = "0.1.0"
+description = "Gestor y agentes de solo lectura de IA_NEST"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "PyYAML>=6,<7",
+]
+
+[project.scripts]
+ianest-agents = "ianest_agents.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+pythonpath = ["src"]

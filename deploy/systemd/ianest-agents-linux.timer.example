@@ -1,0 +1,10 @@
+[Unit]
+Description=Ejecucion diaria de IA_NEST agents Linux check
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+Unit=ianest-agents-linux.service
+
+[Install]
+WantedBy=timers.target
